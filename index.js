@@ -11,11 +11,14 @@ if(leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
     render(myLeads)
 }
-const tabs = [
-    {url: "https://www.linkedin.com/"}
-]
+
 tabBtn.addEventListener("click",function() {
-    console.log(tabs[0])
+    chrome.tabs.query({active: true,currentWindow: true},function(tabs){
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads",JSON.stringify(myLeads))
+        render(myLeads)
+    })
+    console.log(tabs[0].url)
 })
 function render(leads) {
     let listItems = ""
