@@ -5,12 +5,18 @@ const inputbtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 const deletebtn = document.getElementById("delete-btn")
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+const tabBtn = document.getElementById("tab-btn")
 
 if(leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
     render(myLeads)
 }
-
+const tabs = [
+    {url: "https://www.linkedin.com/"}
+]
+tabBtn.addEventListener("click",function() {
+    console.log(tabs[0])
+})
 function render(leads) {
     let listItems = ""
     for(let i =0;i<leads.length;i++) {
@@ -39,8 +45,4 @@ inputbtn.addEventListener("click",function() {
     render(myLeads)
 })
 
-const welcomeEl = document.getElementById("welcome-el")
-function greetUser(greeting,name,emoji) {
-    welcomeEl.textContent =  `${greeting}  ,  ${name}  ${emoji}`
-}
-greetUser("Howdy","james","!")
+ 
